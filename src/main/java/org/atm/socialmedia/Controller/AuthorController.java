@@ -66,4 +66,10 @@ public class AuthorController {
         authorService.deleteAuthor(id);
         return ResponseEntity.ok("Author deleted successfully");
     }
+//    @DeleteMapping("/{name}")
+//    public ResponseEntity<String> deleteAuthor(@PathVariable String username) {
+//        authorService.deleteAuthor(username);
+//        return ResponseEntity.ok("Author deleted successfully");
+//    }
+
 }

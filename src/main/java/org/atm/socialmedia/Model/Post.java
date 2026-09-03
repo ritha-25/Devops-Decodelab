@@ -2,6 +2,7 @@ package org.atm.socialmedia.Model;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import org.hibernate.annotations.CreationTimestamp;
 import java.time.LocalDateTime;
 
 @Entity
@@ -24,10 +25,6 @@ public class Post {
     @JoinColumn(name = "author_id")
     private Author createdBy;
 
+    @CreationTimestamp
     private LocalDateTime createdAt;
-
-    @PrePersist
-    public void onCreate() {
-        this.createdAt = LocalDateTime.now();
-    }
 }

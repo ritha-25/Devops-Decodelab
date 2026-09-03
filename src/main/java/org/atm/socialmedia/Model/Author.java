@@ -2,7 +2,9 @@ package org.atm.socialmedia.Model;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import org.hibernate.annotations.CreationTimestamp;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Data
@@ -20,13 +22,12 @@ public class Author {
     @Column(unique = true)
     private String email;
 
+    @OneToMany(mappedBy = "createdBy")
+    private List<Post> posts;
+
     @Column(columnDefinition = "TEXT")
     private String bio;
 
+    @CreationTimestamp
     private LocalDateTime createdAt;
-
-    @PrePersist
-    public void onCreate() {
-        this.createdAt = LocalDateTime.now();
-    }
 }
