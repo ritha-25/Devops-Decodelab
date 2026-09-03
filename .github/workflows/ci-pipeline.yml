@@ -1,0 +1,34 @@
+name: DecodeLabs Project 3 Java CI Pipeline
+
+on:
+  push:
+    branches: [ main, master, '**' ]
+
+jobs:
+  build-and-test:
+
+    runs-on: ubuntu-latest
+
+
+    steps:
+
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+
+      - name: Set up JDK Runtime
+        uses: actions/setup-java@v4
+        with:
+          java-version: '25'
+          distribution: 'temurin'
+
+
+      - name: Build and Test Java Project
+        run: |
+          echo "Starting Automated Build Stage..."
+          # If using Maven:
+          mvn clean test
+          
+          # this for gradle
+          # chmod +x ./gradlew
+          # ./gradlew test
