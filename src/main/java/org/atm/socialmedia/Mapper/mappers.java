@@ -1,5 +1,5 @@
-package org.atm.socialmedia.Mapper;
-
-public interface mappers {
-    public
-}
+//package org.atm.socialmedia.Mapper;
+//
+//public interface mappers {
+//    public
+//}

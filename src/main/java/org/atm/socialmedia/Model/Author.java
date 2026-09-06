@@ -22,7 +22,7 @@ public class Author {
     @Column(unique = true)
     private String email;
 
-    @OneToMany(mappedBy = "createdBy")
+    @OneToMany(mappedBy = "createdBy", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Post> posts;
 
     @Column(columnDefinition = "TEXT")

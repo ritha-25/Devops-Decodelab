@@ -4,8 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.atm.socialmedia.DTO.CreatePostRequest;
 import org.atm.socialmedia.DTO.PostResponse;
 import org.atm.socialmedia.DTO.UpdatePostRequest;
-import org.atm.socialmedia.Exceptions.PostException;
-import org.atm.socialmedia.Model.Author;
+import org.atm.socialmedia.Exceptions.PostException;import org.atm.socialmedia.Model.Author;
 import org.atm.socialmedia.Model.Post;
 import org.atm.socialmedia.Repository.AuthorRepository;
 import org.atm.socialmedia.Repository.PostRepository;
@@ -22,12 +21,9 @@ public class PostService {
     private final PostRepository postRepository;
     private final AuthorRepository authorRepository;
 
-    public PostResponse createPost(CreatePostRequest request) throws PostException {
+    public PostResponse createPost(CreatePostRequest request) {
         Author author = authorRepository.findById(request.getAuthorId())
                 .orElseThrow(() -> new RuntimeException("Author not found with id: " + request.getAuthorId()));
-        if(request.getTitle().length()<10 || request.getTitle().length()>100){
-            throw new PostException("Title s should be btween 10 and 100");
-        }
         Post post = new Post();
         post.setTitle(request.getTitle());
         post.setContent(request.getContent());
